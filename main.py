@@ -2,6 +2,7 @@ from core.compressor import basic_compress
 from core.log import log_compression
 from core.analyze import analyze_compression
 from core.reflect import analyze_log_history
+from core.reflect import analyze_log_history, check_recent_efficiency
 
 def run():
     print("[Replicant] Analyzing past performance...")
@@ -14,6 +15,11 @@ def run():
         print(f"[Replicant] Most Used Method: {history['most_used_method']}")
     else:
         print(f"[Replicant] {history}")
+
+    if check_recent_efficiency():
+        print("[Replicant] Warning: Recent compression performance has been low.")
+        print("[Replicant] Suggest evaluating alternate compression methods.")
+        
     print("[Replicant] Reading input file...")
 
     with open("input/sample_data.txt", "r") as infile:
@@ -34,6 +40,9 @@ def run():
         outfile.write(compressed_data)
 
     print("[Replicant] Compression complete. Output saved to output/compressed_output.txt.")
+
+if __name__ == "__main__":
+    run()
 
 if __name__ == "__main__":
     run()
