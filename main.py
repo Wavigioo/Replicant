@@ -12,7 +12,7 @@ def run():
 
     # Analyze and Log
     efficiency = analyze_compression(raw_data, compressed_data)
-    log_compression(raw_data, compressed_data)
+    log_compression(raw_data, compressed_data, efficiency=efficiency)
 
     print(f"[Replicant] Compression efficiency: {efficiency}%")
 
