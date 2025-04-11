@@ -46,3 +46,31 @@ def analyze_log_history(log_path="logs/replicant.log"):
     }
 
     return summary
+
+
+def check_recent_efficiency(log_path="logs/replicant.log", threshold=25.0, window=3):
+    try:
+        with open(log_path, "r") as logfile:
+            lines = logfile.readlines()
+    except FileNotFoundError:
+        return False  # No data to judge
+
+    efficiencies = []
+
+    for line in reversed(lines):  # Start from most recent
+        if "Efficiency:" in line:
+            try:
+                parts = line.strip().split(" | ")
+                for part in parts:
+                    if part.startswith("Efficiency:"):
+                        eff = float(part.split(": ")[1].replace("%", ""))
+                        efficiencies.append(eff)
+                        if len(efficiencies) == window:
+                            break
+            except (IndexError, ValueError):
+                continue
+
+    if len(efficiencies) < window:
+        return False  # Not enough data to decide
+
+    return all(e < threshold for e in efficiencies)
