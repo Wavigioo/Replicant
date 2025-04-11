@@ -4,6 +4,7 @@ from core.analyze import analyze_compression
 from core.reflect import analyze_log_history
 from core.reflect import analyze_log_history, check_recent_efficiency
 from core.strategies import choose_compression_method
+from core.log import log_user_feedback
 import time
 
 def run():
@@ -46,6 +47,14 @@ def run():
         outfile.write(compressed_data)
 
     print("[Replicant] Compression complete. Output saved to output/compressed_output.txt.")
+
+    feedback = input("[Replicant] How would you rate this compression? (good/bad/skip): ").strip().lower()
+
+    if feedback in ["good", "bad"]:
+        log_user_feedback(method_used, efficiency, feedback)
+        print("[Replicant] Feedback recieved. Thank you. 🙂")
+    else:
+        print("[Replicant] Feedback skipped. 👍")
 
 if __name__ == "__main__":
     run()
