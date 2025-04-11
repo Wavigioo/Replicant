@@ -1,8 +1,19 @@
 from core.compressor import basic_compress
 from core.log import log_compression
 from core.analyze import analyze_compression
+from core.reflect import analyze_log_history
 
 def run():
+    print("[Replicant] Analyzing past performance...")
+    history = analyze_log_history()
+
+    if isinstance(history, dict):
+        print(f"[Replicant] Past jobs: {history['total_runs']}")
+        print(f"[Replicant] Avg Efficiency: {history['average_efficiency']}%")
+        print(f"[Replicant] Best: {history['best_efficiency']}%, Worst: {history['worst_efficiency']}%")
+        print(f"[Replicant] Most Used Method: {history['most_used_method']}")
+    else:
+        print(f"[Replicant] {history}")
     print("[Replicant] Reading input file...")
 
     with open("input/sample_data.txt", "r") as infile:
