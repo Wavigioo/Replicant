@@ -1,11 +1,10 @@
 from core.compressor import basic_compress
-from core.log import log_compression
+from core.log import log_compression, log_user_feedback
 from core.analyze import analyze_compression
-from core.reflect import analyze_log_history
-from core.reflect import analyze_log_history, check_recent_efficiency
+from core.reflect import analyze_log_history, analyze_user_feedback, check_recent_efficiency
 from core.strategies import choose_compression_method
-from core.log import log_user_feedback
 import time
+
 
 def run():
     print("[Replicant] Analyzing past performance...")
@@ -20,8 +19,7 @@ def run():
         print(f"[Replicant] {history}")
 
     if check_recent_efficiency():
-        print("[Replicant] Warning: Recent compression performance has been low.")
-        print("[Replicant] Suggest evaluating alternate compression methods.")
+        print("[Replicant] Warning: Efficiency drop detected. 😕")
         
     print("[Replicant] Reading input file...")
     with open("input/sample_data.txt", "r") as infile:
@@ -55,6 +53,16 @@ def run():
         print("[Replicant] Feedback recieved. Thank you. 🙂")
     else:
         print("[Replicant] Feedback skipped. 👍")
+
+    history = analyze_log_history()
+
+    feedback_data = analyze_user_feedback()
+
+    if feedback_data:
+        print("[Replicant] User Feedback Summary:")
+        for sentiment, methods in feedback_data.items():
+            top_method = max(methods, key=methods.get) if methods else "None"
+            print(f" {sentiment.capitalize()}: Most common = {top_method}")
 
 if __name__ == "__main__":
     run()
