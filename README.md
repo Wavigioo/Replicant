@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.4.0**  
+**v0.5.0**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -75,3 +75,9 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Integrated Replicant’s first performance-driven decision loop
 - Fallback logic ensures continued operation with no logs
 - Paves the way for real-time learning and predictive logic
+
+### v0.5.0 - User Feedback Integration
+- Replicant now asks the user to rate each compression run (good/bad/skip)
+- Feedback is logged to a new file: `user_feedback.log`
+- Added emoji-based responses to personalize interaction
+- This marks Replicant’s first step toward emotional intelligence and user-driven optimization
