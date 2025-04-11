@@ -9,8 +9,16 @@ A compression-aware pre-processing engine for AI sensory integration.
 ---
 
 ## Project Structure
-replicant/ ├── input/ # raw files to compress/analyze ├── core/ # core logic modules (compression, analysis) ├── db/ # SQLite or Postgres DB logic ├── output/ # transformed/compressed data ├── utils/ # helper functions, logs, performance tracking └── main.py # main execution script
 
+```
+replicant/
+├── input/        # raw files to compress/analyze
+├── core/         # core logic modules (compression, analysis)
+├── db/           # SQLite or Postgres DB logic
+├── output/       # transformed/compressed data
+├── utils/        # helper functions, logs, performance tracking
+└── main.py       # main execution script
+```
 ---
 
 ## Mission
