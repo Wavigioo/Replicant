@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.3.0**  
+**v0.3.1**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -57,3 +57,9 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Replicant now logs duration in milliseconds alongside efficiency
 - Enables future time-based performance comparisons
 - Prepares system for adaptive decision-making and timeout alerts
+
+### v0.3.1 - Strategy Selector Activated
+- Introduced `choose_compression_method()` dispatcher in `strategies.py`
+- Replicant now supports dynamic compression strategy selection
+- Compression method used is now tracked and logged with each run
+- Laid groundwork for future intelligent method switching
