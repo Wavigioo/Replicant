@@ -3,6 +3,7 @@ from core.log import log_compression
 from core.analyze import analyze_compression
 from core.reflect import analyze_log_history
 from core.reflect import analyze_log_history, check_recent_efficiency
+from core.strategies import choose_compression_method
 import time
 
 def run():
@@ -28,10 +29,12 @@ def run():
     print("[Replicant] Compressing data...")
     start_time = time.time()
     
-    compressed_data = basic_compress(raw_data)
+    compressed_data, method_used = choose_compression_method(raw_data, strategy="basic")
+
 
     runtime_ms = round((time.time() - start_time) * 1000, 2)
     efficiency = analyze_compression(raw_data, compressed_data)
+    log_compression(raw_data, compressed_data, method=method_used, efficiency=efficiency)
 
     if efficiency >= 25:
         log_compression(raw_data, compressed_data, efficiency=efficiency, runtime_ms=runtime_ms)
