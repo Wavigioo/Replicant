@@ -3,7 +3,8 @@ def basic_compress(text):
     seen = set()
     compressed = []
     for word in words:
-        if word.lower() not in seen:
+        normalized = word.lower().strip()
+        if normalized not in seen:
             compressed.append(word)
-    seen.add(word.lower())
+            seen.add(normalized)
     return ' '.join(compressed)
