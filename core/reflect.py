@@ -74,3 +74,53 @@ def check_recent_efficiency(log_path="logs/replicant.log", threshold=25.0, windo
         return False  # Not enough data to decide
 
     return all(e < threshold for e in efficiencies)
+
+def analyze_user_feedback(feedback_path="logs/user_feedback.log"):
+    try:
+        with open(feedback_path, "r") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        return {}
+
+    counts = {"good": {}, "bad":{}}
+
+    for line in lines:
+        parts = line.strip().split(" | ")
+        method = None
+        feedback = None
+        for part in parts:
+            if part.startswith("Method:"):
+                method = part.split(": ")[1]
+            elif part.startswith("Feedback:"):
+                feedback = part.split(": ")[1]
+        if method and feedback in counts:
+            if method not in counts[feedback]:
+                counts[feedback][method] = 1
+            else:
+                counts[feedback][method] += 1
+
+def check_recent_efficiency(log_path="logs/replicant.log", threshold=20, alert_level=40):
+    try:
+        with open(log_path, "r") as logfile:
+            lines = logfile.readlines()[-threshold:]
+    except FileNotFoundError:
+        return False
+
+    efficiencies = []
+    for line in lines:
+        parts = line.strip().split(" | ")
+        for part in parts:
+            if part.startswith("Efficiency:"):
+                try:
+                    eff = float(part.split(": ")[1].replace("%", ""))
+                    efficiencies.append(eff)
+                except (IndexError, ValueError):
+                    continue
+
+    if not efficiencies:
+        return False
+
+    avg_eff = sum(efficiencies) / len(efficiencies)
+    return avg_eff < alert_level
+
+    return counts
