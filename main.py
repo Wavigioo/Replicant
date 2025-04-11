@@ -29,7 +29,7 @@ def run():
     print("[Replicant] Compressing data...")
     start_time = time.time()
     
-    compressed_data, method_used = choose_compression_method(raw_data, strategy="basic")
+    compressed_data, method_used = choose_compression_method(raw_data, strategy="smart")
 
 
     runtime_ms = round((time.time() - start_time) * 1000, 2)
