@@ -3,6 +3,7 @@ from core.log import log_compression
 from core.analyze import analyze_compression
 from core.reflect import analyze_log_history
 from core.reflect import analyze_log_history, check_recent_efficiency
+import time
 
 def run():
     print("[Replicant] Analyzing past performance...")
@@ -21,17 +22,19 @@ def run():
         print("[Replicant] Suggest evaluating alternate compression methods.")
         
     print("[Replicant] Reading input file...")
-
     with open("input/sample_data.txt", "r") as infile:
         raw_data = infile.read()
 
     print("[Replicant] Compressing data...")
+    start_time = time.time()
+    
     compressed_data = basic_compress(raw_data)
 
+    runtime_ms = round((time.time() - start_time) * 1000, 2)
     efficiency = analyze_compression(raw_data, compressed_data)
 
     if efficiency >= 25:
-        log_compression(raw_data, compressed_data, efficiency=efficiency)
+        log_compression(raw_data, compressed_data, efficiency=efficiency, runtime_ms=runtime_ms)
         print(f"[Replicant] Compression efficiency: {efficiency}%")
     else:
         print(f"[Replicant] Compression too low ({efficiency}%) — skipping log.")
