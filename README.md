@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.2.0**  
+**v0.2.1**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -44,3 +44,10 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Log format updated in `log.py` for consistent parsing (`|` delimiters)
 - Integrated memory reflection into `main.py` execution flow
 - Logging now conditional: only logs if efficiency ≥ 25%
+
+### Changelog – v0.2.1
+
+- Added behavioral logic via `check_recent_efficiency()` in `reflect.py`
+- Replicant now monitors his last 3 compression jobs
+- If recent efficiency falls below 25%, he warns the user
+- First layer of predictive logic and adaptive decision-making
