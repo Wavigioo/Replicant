@@ -45,7 +45,7 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Integrated memory reflection into `main.py` execution flow
 - Logging now conditional: only logs if efficiency ≥ 25%
 
-### Changelog – v0.2.1
+### v0.2.1
 
 - Added behavioral logic via `check_recent_efficiency()` in `reflect.py`
 - Replicant now monitors his last 3 compression jobs
