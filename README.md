@@ -14,6 +14,7 @@ A compression-aware pre-processing engine for AI sensory integration.
 ---
 
 ### Project Structure
+```
 Replicant/
 ├── core/               # Core compression, logging, analysis logic
 │   ├── compressor.py
