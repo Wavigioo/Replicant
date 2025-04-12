@@ -171,6 +171,17 @@ Refactored preferred_strategy and override_strategy flow for cleaner, safer deci
 
 ---
 
+## Screenshots
+
+**🧠 Replicant Terminal Output**
+![Replicant Output](outputs_screenshot.png)
+
+**📄 Sample Log File**
+![Log File](log_screen_shot.png)
+
+
+---
+
 ## The Future of Compression is Intelligent
 
 Replicant isn't just a tool — it's a learning system. It adapts to performance over time, analyzes human feedback, and suggests optimal strategies based on real-world outcomes.
