@@ -165,3 +165,10 @@ cd Replicant
 # Ensure Python 3.10+ is installed
 # Run the main engine
 python main.py
+
+📚 [Wiki](https://github.com/whycantibelinus/Replicant/wiki) — coming soon
+
+## Contributing
+Want to contribute? File an issue or submit a pull request!
+
+If Replicant helps you or inspires you, consider ⭐ starring the repo or becoming a GitHub Sponsor.
