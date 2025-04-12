@@ -32,4 +32,4 @@ def choose_compression_method(text, strategy="basic", override=None):
     if strategy in available_methods:
         return available_methods[strategy](text), strategy
     else:
-        raise ValueError(f"Unknown compression strategy: {strategy}")
+        raise ValueError(f"Unknown compression strategy: basic")
