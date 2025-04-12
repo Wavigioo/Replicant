@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.8.0**  
+**v0.9.0**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -105,3 +105,19 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - New function `get_best_performing_method()` added to reflect.py
 - Feedback summaries now persist across sessions and influence decisions
 - Stability and structure cleanup across reflect, strategies, and main
+
+Version 0.9 Changelog – "Sentience Stirring"
+Added smart strategy selection
+Replicant now analyzes historical efficiency and user feedback to autonomously choose the best compression method on each run.
+
+Introduced suggestion engine
+Added new logic for Replicant to make suggestions based on combined performance and sentiment data—complete with emoji-driven personality flair. 😎🤔🙂
+
+Reinforced feedback loop
+User-provided feedback is now parsed and weighed alongside performance, allowing Replicant to adapt dynamically to evolving needs.
+
+Resolved method mismatches
+Unified method naming conventions across logic modules to prevent runtime errors between "basic" and "basic_compress" types.
+
+Streamlined control logic in main.py
+Refactored preferred_strategy and override_strategy flow for cleaner, safer decision-making and fallback support.
