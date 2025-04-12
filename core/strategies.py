@@ -10,7 +10,12 @@ available_methods = {
     "reverse": reverse_compress
 }
 
-def choose_compression_method(text, strategy="basic"):
+def choose_compression_method(text, strategy="basic", override=None):
+    # Forced override logic
+    if override in available_methods:
+        return available_methods[override](text), override
+
+    # Smart strategy (learn from logs)
     if strategy == "smart":
         log_summary = analyze_log_history()
 
@@ -19,11 +24,12 @@ def choose_compression_method(text, strategy="basic"):
             chosen_func = available_methods.get(best_method, basic_compress)
             return chosen_func(text), best_method
         else:
-            # Fallback if no log history
+            # No history? Choose randomly
             chosen_name, chosen_func = random.choice(list(available_methods.items()))
             return chosen_func(text), chosen_name
 
-    elif strategy in available_methods:
+    # Default strategy behavior
+    if strategy in available_methods:
         return available_methods[strategy](text), strategy
     else:
         raise ValueError(f"Unknown compression strategy: {strategy}")
