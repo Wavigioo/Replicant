@@ -1,7 +1,7 @@
 from core.compressor import basic_compress
 from core.log import log_compression, log_user_feedback
 from core.analyze import analyze_compression
-from core.reflect import analyze_log_history, analyze_user_feedback, check_recent_efficiency
+from core.reflect import analyze_log_history, analyze_user_feedback, check_recent_efficiency, get_best_performing_method
 from core.strategies import choose_compression_method
 import time
 
@@ -28,12 +28,16 @@ def run():
     print("[Replicant] Compressing data...")
     start_time = time.time()
 
+    preferred_strategy = get_best_performing_method()
+    print(f"[Replicant] Trending best method: {preferred_strategy}")
+
     override_strategy = None
     if check_recent_efficiency():
         print("[Replicant] Switching strategy due to low efficiency.")
         override_strategy = "reverse"
+
     
-    compressed_data, method_used = choose_compression_method(raw_data, override=override_strategy)
+    compressed_data, method_used = choose_compression_method(raw_data, strategy=preferred_strategy, override=override_strategy)
 
 
     runtime_ms = round((time.time() - start_time) * 1000, 2)
