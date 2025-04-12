@@ -13,17 +13,20 @@ A compression-aware pre-processing engine for AI sensory integration.
 
 ---
 
-## Project Structure
+### Project Structure
+Replicant/
+├── core/               # Core compression, logging, analysis logic
+│   ├── compressor.py
+│   ├── log.py
+│   ├── analyze.py
+│   ├── reflect.py
+│   ├── strategies.py
+├── input/              # Place your raw input data here
+├── output/             # Compressed outputs go here
+├── logs/               # Internal logs and feedback history
+├── main.py             # Entry point for the Replicant engine
+└── README.md           # This file
 
-```
-replicant/
-├── input/        # raw files to compress/analyze
-├── core/         # core logic modules (compression, analysis)
-├── db/           # SQLite or Postgres DB logic
-├── output/       # transformed/compressed data
-├── utils/        # helper functions, logs, performance tracking
-└── main.py       # main execution script
-```
 ---
 
 ## Mission
@@ -151,3 +154,13 @@ From indie developers to big data scientists, Replicant is designed to be a quie
 This is just v1.0.
 
 Stay tuned.
+
+# Clone the repo
+git clone https://github.com/whycantibelinus/Replicant
+
+# Navigate to the folder
+cd Replicant
+
+# Ensure Python 3.10+ is installed
+# Run the main engine
+python main.py
