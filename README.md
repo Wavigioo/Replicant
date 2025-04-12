@@ -6,6 +6,11 @@ Created by David Walkup & Vero
 
 A compression-aware pre-processing engine for AI sensory integration.
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
+
 ---
 
 ## Project Structure
