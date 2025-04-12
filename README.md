@@ -26,7 +26,7 @@ Replicant/
 ├── logs/               # Internal logs and feedback history
 ├── main.py             # Entry point for the Replicant engine
 └── README.md           # This file
-
+```
 ---
 
 ## Mission
