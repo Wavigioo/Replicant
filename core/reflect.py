@@ -123,4 +123,46 @@ def check_recent_efficiency(log_path="logs/replicant.log", threshold=20, alert_l
     avg_eff = sum(efficiencies) / len(efficiencies)
     return avg_eff < alert_level
 
+def get_best_performing_method(log_path="logs/replicant.log"):
+    try:
+        with open(log_path, "r") as logfile:
+            lines = logfile.readlines()
+    except FileNotFoundError:
+        return "basic"
+
+    method_efficiencies = {}
+
+    for line in lines:
+        parts = line.strip().split(" | ")
+        method = None
+        efficiency = None
+        for part in parts:
+            if part.startswith("Method:"):
+                method = part.split(": ")[1]
+            elif part.startswith("Efficiency:"):
+                try:
+                    efficiency = float(part.split(": ")[1].replace("%", ""))
+                except:
+                    continue
+        if method and efficiency is not None:
+            if method not in method_efficiencies:
+                method_efficiencies[method] = []
+            method_efficiencies[method].append(efficiency)
+
+    best_method = "basic"
+    best_avg = 0.0
+    for method, scores in method_efficiencies.items():
+        avg = sum(scores) / len(scores)
+        if avg > best_avg:
+            best_avg = avg
+            best_method = method
+
+    if best_method == "basic_compress":
+        return "basic"
+    elif best_method == "reverse_compress":
+        return "reverse"
+    else:
+        return best_method
+
+
     return counts
