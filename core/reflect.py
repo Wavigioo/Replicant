@@ -131,9 +131,41 @@ def get_best_performing_method(log_path="logs/replicant.log"):
             best_avg = avg
             best_method = method
 
-    if best_method == "basic_compress":
-        return "basic"
-    elif best_method == "reverse_compress":
-        return "reverse"
+        method_map = {
+        "basic_compress": "basic",
+        "reverse_compress": "reverse",
+        "basic": "basic",
+        "reverse": "reverse"
+    }
+    return method_map.get(best_method, "basic")
+
+
+def suggest_method(log_path="logs/replicant.log", feedback_path="logs/user_feedback.log"):
+    best_by_efficiency = get_best_performing_method(log_path)
+    feedback_data = analyze_user_feedback(feedback_path)
+
+    good_counts = feedback_data.get("good", {})
+    best_by_feedback = max(good_counts, key=good_counts.get) if good_counts else best_by_efficiency
+
+    # If both agree, full confidence
+    if best_by_efficiency == best_by_feedback:
+        return best_by_efficiency, "high"
     else:
-        return best_method
+        # Still make a suggestion, but note mixed signals
+        return best_by_feedback, "moderate"
+
+        best_by_efficiency = get_best_performing_method(log_path)
+    feedback = analyze_user_feedback(feedback_path)
+
+    if not feedback:
+        return best_by_efficiency, "low"
+
+    good_counts = feedback.get("good", {})
+    top_feedback = max(good_counts, key=good_counts.get, default=None)
+
+    if top_feedback == best_by_efficiency:
+        return best_by_efficiency, "high"
+    else:
+        return top_feedback or best_by_efficiency, "medium"
+
+
