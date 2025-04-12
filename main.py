@@ -27,8 +27,13 @@ def run():
 
     print("[Replicant] Compressing data...")
     start_time = time.time()
+
+    override_strategy = None
+    if check_recent_efficiency():
+        print("[Replicant] Switching strategy due to low efficiency.")
+        override_strategy = "reverse"
     
-    compressed_data, method_used = choose_compression_method(raw_data, strategy="smart")
+    compressed_data, method_used = choose_compression_method(raw_data, override=override_strategy)
 
 
     runtime_ms = round((time.time() - start_time) * 1000, 2)
