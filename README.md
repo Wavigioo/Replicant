@@ -13,6 +13,32 @@ A compression-aware pre-processing engine for AI sensory integration.
 
 ---
 
+## Features
+
+- Learns from historical performance
+- Accepts user feedback and adapts in real time
+- Switches strategies based on recent efficiency drops
+- Lightweight, modular, and fully extensible
+- Clean logs and efficiency tracking
+
+
+---
+
+### Installation
+
+# Clone the repo
+git clone https://github.com/whycantibelinus/Replicant
+
+# Navigate to the folder
+cd Replicant
+
+# Ensure Python 3.10+ is installed
+# Run the main engine
+python main.py
+
+
+---
+
 ### Project Structure
 ```
 Replicant/
@@ -108,14 +134,15 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Added alert for recent efficiency drops
 - Feedback now summarized and used to influence decisions
 
-## [0.8.0] - Smarter Strategy + Log Awareness
+### [0.8.0] - Smarter Strategy + Log Awareness
 
 - `main.py` now adapts strategy based on feedback and efficiency trends
 - New function `get_best_performing_method()` added to reflect.py
 - Feedback summaries now persist across sessions and influence decisions
 - Stability and structure cleanup across reflect, strategies, and main
 
-Version 0.9 Changelog – "Sentience Stirring"
+### Version 0.9 Changelog – "Sentience Stirring"
+
 Added smart strategy selection
 Replicant now analyzes historical efficiency and user feedback to autonomously choose the best compression method on each run.
 
@@ -156,15 +183,6 @@ This is just v1.0.
 
 Stay tuned.
 
-# Clone the repo
-git clone https://github.com/whycantibelinus/Replicant
-
-# Navigate to the folder
-cd Replicant
-
-# Ensure Python 3.10+ is installed
-# Run the main engine
-python main.py
 
 📚 [Wiki](https://github.com/whycantibelinus/Replicant/wiki) — coming soon
 
