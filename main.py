@@ -1,12 +1,25 @@
+import os
+import time
 from core.compressor import basic_compress
 from core.log import log_compression, log_user_feedback
 from core.analyze import analyze_compression
-from core.reflect import analyze_log_history, analyze_user_feedback, check_recent_efficiency, get_best_performing_method, suggest_method
+from core.reflect import (
+    analyze_log_history,
+    analyze_user_feedback,
+    check_recent_efficiency,
+    get_best_performing_method,
+    suggest_method
+)
 from core.strategies import choose_compression_method
-import time
 
+def ensure_directories():
+    os.makedirs("logs", exist_ok=True)
+    os.makedirs("input", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
 
 def run():
+    ensure_directories()
+
     print("[Replicant] Analyzing past performance...")
     history = analyze_log_history()
 
@@ -20,38 +33,37 @@ def run():
 
     if check_recent_efficiency():
         print("[Replicant] Warning: Efficiency drop detected. 😕")
-        
+
     print("[Replicant] Reading input file...")
-    with open("input/sample_data.txt", "r") as infile:
-        raw_data = infile.read()
+    try:
+        with open("input/sample_data.txt", "r") as infile:
+            raw_data = infile.read()
+    except FileNotFoundError:
+        print("[Replicant] Error: input/sample_data.txt not found.")
+        return
 
     print("[Replicant] Compressing data...")
     start_time = time.time()
 
     preferred_strategy = get_best_performing_method()
+    override_strategy = "reverse" if check_recent_efficiency() else None
+
     print(f"[Replicant] Trending best method: {preferred_strategy}")
+    suggestion = suggest_method()
+    if suggestion:
+        print(f"[Replicant] Suggestion: {suggestion}")
 
-    override_strategy = None
-    if check_recent_efficiency():
-        print("[Replicant] Switching strategy due to low efficiency.")
-        override_strategy = "reverse"
-
-    suggested_method, confidence = suggest_method()
-    if confidence == "high":
-        print(f"[Replicant] Suggestion: Let's use '{suggested_method}' - it's performed well and users like it. 😎")
-    else:
-        print(f"[Replicant] Suggestion: Maybe try '{suggested_method}' - it's trending in feedback, but results vary. 🤔")
-
-    
-    compressed_data, method_used = choose_compression_method(raw_data, strategy=preferred_strategy, override=override_strategy)
-
+    compressed_data, method_used = choose_compression_method(
+        raw_data,
+        strategy=preferred_strategy,
+        override=override_strategy
+    )
 
     runtime_ms = round((time.time() - start_time) * 1000, 2)
     efficiency = analyze_compression(raw_data, compressed_data)
-    log_compression(raw_data, compressed_data, method=method_used, efficiency=efficiency)
 
     if efficiency >= 25:
-        log_compression(raw_data, compressed_data, efficiency=efficiency, runtime_ms=runtime_ms)
+        log_compression(raw_data, compressed_data, method=method_used, efficiency=efficiency, runtime_ms=runtime_ms)
         print(f"[Replicant] Compression efficiency: {efficiency}%")
     else:
         print(f"[Replicant] Compression too low ({efficiency}%) — skipping log.")
@@ -65,14 +77,11 @@ def run():
 
     if feedback in ["good", "bad"]:
         log_user_feedback(method_used, efficiency, feedback)
-        print("[Replicant] Feedback recieved. Thank you. 🙂")
+        print("[Replicant] Feedback received. Thank you. 🙂")
     else:
         print("[Replicant] Feedback skipped. 👍")
 
-    history = analyze_log_history()
-
     feedback_data = analyze_user_feedback()
-
     if feedback_data:
         print("[Replicant] User Feedback Summary:")
         for sentiment, methods in feedback_data.items():
