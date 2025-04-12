@@ -190,3 +190,10 @@ Stay tuned.
 Want to contribute? File an issue or submit a pull request!
 
 If Replicant helps you or inspires you, consider ⭐ starring the repo or becoming a GitHub Sponsor.
+
+## Credits
+
+Created with passion by David Walkup  
+Compression engine design and logic co-developed with Vero (GPT-4 AI, OpenAI)
+
+Thanks to everyone supporting the open-source journey.
