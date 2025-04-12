@@ -47,34 +47,6 @@ def analyze_log_history(log_path="logs/replicant.log"):
 
     return summary
 
-
-def check_recent_efficiency(log_path="logs/replicant.log", threshold=25.0, window=3):
-    try:
-        with open(log_path, "r") as logfile:
-            lines = logfile.readlines()
-    except FileNotFoundError:
-        return False  # No data to judge
-
-    efficiencies = []
-
-    for line in reversed(lines):  # Start from most recent
-        if "Efficiency:" in line:
-            try:
-                parts = line.strip().split(" | ")
-                for part in parts:
-                    if part.startswith("Efficiency:"):
-                        eff = float(part.split(": ")[1].replace("%", ""))
-                        efficiencies.append(eff)
-                        if len(efficiencies) == window:
-                            break
-            except (IndexError, ValueError):
-                continue
-
-    if len(efficiencies) < window:
-        return False  # Not enough data to decide
-
-    return all(e < threshold for e in efficiencies)
-
 def analyze_user_feedback(feedback_path="logs/user_feedback.log"):
     try:
         with open(feedback_path, "r") as f:
@@ -98,6 +70,8 @@ def analyze_user_feedback(feedback_path="logs/user_feedback.log"):
                 counts[feedback][method] = 1
             else:
                 counts[feedback][method] += 1
+
+    return counts
 
 def check_recent_efficiency(log_path="logs/replicant.log", threshold=20, alert_level=40):
     try:
@@ -163,6 +137,3 @@ def get_best_performing_method(log_path="logs/replicant.log"):
         return "reverse"
     else:
         return best_method
-
-
-    return counts
