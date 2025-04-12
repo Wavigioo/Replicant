@@ -98,3 +98,10 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Resolved compatibility bug with legacy logs
 - Added alert for recent efficiency drops
 - Feedback now summarized and used to influence decisions
+
+## [0.8.0] - Smarter Strategy + Log Awareness
+
+- `main.py` now adapts strategy based on feedback and efficiency trends
+- New function `get_best_performing_method()` added to reflect.py
+- Feedback summaries now persist across sessions and influence decisions
+- Stability and structure cleanup across reflect, strategies, and main
