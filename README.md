@@ -204,7 +204,7 @@ Replicant is open to community contribution, discussion, and evolution.
 If you're a developer, researcher, or curious mind with ideas or improvements, we’d love to hear from you and collaborate.
 
 - GitHub: [whycantibelinus](https://github.com/whycantibelinus/)
-- Email: [your-future-email]@gmail.com (professional email coming soon)
+- Email: [replicantcorporation]@gmail.com (professional email coming soon)
 
 Let’s build the future of compression-aware AI together.
 
