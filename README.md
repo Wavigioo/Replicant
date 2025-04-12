@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.9.0**  
+**v1.0.0**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -121,3 +121,14 @@ Unified method naming conventions across logic modules to prevent runtime errors
 
 Streamlined control logic in main.py
 Refactored preferred_strategy and override_strategy flow for cleaner, safer decision-making and fallback support.
+
+## v1.0.0 — Initial Public Release
+
+- Core engine stable and fully modular
+- Compression methods: basic and reverse
+- Dynamic strategy switching based on log/feedback history
+- Performance tracking (efficiency, runtime)
+- User feedback system (good/bad/skip)
+- Feedback-informed method suggestions
+- Alert system for low-efficiency detection
+- Fully testable and extensible architecture
