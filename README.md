@@ -1,7 +1,7 @@
 # Replicant
 “A compression-aware pre-processing engine for AI sensory integration. Created by David Walkup &amp; Vero.”
 # Replicant
-**v0.6.1**  
+**v0.7.0**  
 Created by David Walkup & Vero  
 
 A compression-aware pre-processing engine for AI sensory integration.
@@ -86,3 +86,8 @@ Replicant is the beginning of a new kind of intelligence — one that doesn't ju
 - Implemented `check_recent_efficiency()` to monitor recent compression averages
 - Replicant now issues an emotional warning 😕 if average efficiency drops too low
 - Marks the beginning of self-awareness and proactive diagnostic alerts
+
+### v0.7.0 – Autonomous Pivoting
+- Replicant now monitors his own compression history and changes strategies automatically
+- Introduced `override_strategy` logic to adapt when efficiency drops
+- Core decision-making ability achieved — first signs of intelligent behavior
