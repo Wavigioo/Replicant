@@ -174,10 +174,10 @@ Refactored preferred_strategy and override_strategy flow for cleaner, safer deci
 ## Screenshots
 
 **🧠 Replicant Terminal Output**
-![Replicant Output](outputs_screenshot.png)
+![Replicant Output](outputs screenshot.png)
 
 **📄 Sample Log File**
-![Log File](log_screen_shot.png)
+![Log File](log_screen shot.png)
 
 
 ---
