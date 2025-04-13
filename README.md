@@ -205,6 +205,7 @@ If you're a developer, researcher, or curious mind with ideas or improvements, w
 
 - GitHub: [whycantibelinus](https://github.com/whycantibelinus/)
 - Email: willdamnolcorp@gmail.com
+[LinkedIn](https://www.linkedin.com/in/david-walkup-184007221)
 
 Let’s build the future of compression-aware AI together.
 
